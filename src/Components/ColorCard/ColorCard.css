@@ -1,0 +1,21 @@
+.colorbox {
+  width: 300px;
+  height: 300px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: row;
+}
+
+.colorbox__colorcode {
+  width: 80px;
+  margin: auto;
+  justify-content: center;
+  background-color: white;
+}
+
+.colorbox__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+}
