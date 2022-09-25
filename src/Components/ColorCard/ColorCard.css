@@ -4,6 +4,7 @@
   border: 1px solid grey;
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .colorbox__colorcode {
@@ -18,4 +19,13 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 30px;
+}
+
+.colorbox__delete-button {
+  background: white;
+  color: black;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
