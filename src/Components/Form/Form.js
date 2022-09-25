@@ -12,24 +12,26 @@ export default function Form({ appendColorCard }) {
     appendColorCard(hexcodeFromText);
   }
   return (
-    <form onSubmit={onSubmit}>
+    <form className="form" onSubmit={onSubmit}>
       <label htmlFor="colorPick">Pick your color:</label>
       <input
+        className="form__input"
         type="color"
         id="colorPick"
         name="hexcodeFromPicker"
         value={colorInput}
         onChange={(event) => setColorInput(event.target.value)}
       />
-      <label htmlFor="addColor">Or add your color manually</label>
+      <label htmlFor="addColor">Or add your color manually:</label>
       <input
+        className="form__input"
         type="text"
         id="addColor"
         name="hexcodeFromText"
         value={colorInput}
         onChange={(event) => setColorInput(event.target.value)}
       />
-      <button>Add your Color</button>
+      <button className="form__button">Add your Color</button>
     </form>
   );
 }

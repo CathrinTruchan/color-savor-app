@@ -9,35 +9,52 @@ import "./Components/Form/Form.css";
 const colorsArray = [
   {
     id: nanoid(),
-    colorCode: "#562C2C",
+    colorCode: "562C2C",
   },
 
   {
     id: nanoid(),
-    colorCode: "#F2542D",
+    colorCode: "F2542D",
   },
 
   {
     id: nanoid(),
-    colorCode: "#F5DFBB",
+    colorCode: "F5DFBB",
   },
 
   {
     id: nanoid(),
-    colorCode: "#0E9594",
+    colorCode: "0E9594",
   },
 
   {
     id: nanoid(),
-    colorCode: "#127475",
+    colorCode: "127475",
   },
 ];
 
 function App() {
-  const [colors, setColors] = useState(() => {
-    return JSON.parse(localStorage.getItem("colors")) ?? [colorsArray];
+  const [colors, setColors] = useState(
+    JSON.parse(localStorage.getItem("colors")) ?? colorsArray
+  );
+  const [fetchAPI, setFetchAPI] = useState(
+    "https://www.thecolorapi.com/id?hex=24B1E0"
+  );
+
+  async function fetchColorNames() {
+    const response = await fetch(fetchAPI);
+    const fetchedColors = await response.json();
+    console.log(fetchedColors.name.value);
+  }
+
+  useEffect(() => {
+    colorsArray.map((color) => {
+      return (
+        setFetchAPI(`https://www.thecolorapi.com/id?hex=${color.colorCode}`),
+        fetchColorNames()
+      );
+    });
   });
-  console.log("all colors:" + colors[0].colorCode);
 
   function appendColorCard(colorCode) {
     setColors([

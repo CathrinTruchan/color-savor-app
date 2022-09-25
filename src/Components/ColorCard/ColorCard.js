@@ -19,7 +19,7 @@ export default function ColorCard({
         className="colorbox__delete-button"
         onClick={(event) => deleteColorCard(id)}
       >
-        Delete
+        X
       </button>
       <input
         type="text"

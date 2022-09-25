@@ -1,5 +1,24 @@
 .form-container {
-  margin: 50px 0;
-  border: 1px solid black;
+  margin: auto;
   padding: 30px;
+  background-color: #eeeeee;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form__input {
+  align-self: center;
+}
+
+.form__button {
+  width: 30%;
+  align-self: center;
+  margin-top: 10px;
+  border: none;
+  background-color: black;
+  color: white;
 }
