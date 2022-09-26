@@ -7,7 +7,7 @@ export default function ColorCard({
   updateColorCard,
   deleteColorCard,
 }) {
-  const [colorName, setColorName] = useState([]);
+  const [colorNames, setColorNames] = useState([{ name: "" }]);
 
   function copyToClipboard() {
     navigator.clipboard.writeText(colorCode).then(() => {
@@ -20,14 +20,25 @@ export default function ColorCard({
       `https://www.thecolorapi.com/id?hex=${colorCode.substring(1)}`
     );
     const fetchedColors = await response.json();
-    console.log(fetchedColors.name.value);
+    //const colorName = fetchedColors.name.value;
+    //console.log(fetchedColors.name.value);
+    setColorNames(
+      colorNames.map((item) => {
+        return { name: fetchedColors.name.value };
+      })
+    );
+    console.log(colorNames);
   }
 
   useEffect(() => {
-    const colorName = fetchColorNames();
-    setColorName(colorName);
-    console.log("test" + colorName);
+    fetchColorNames();
   }, []);
+
+  colorNames = [
+    { name: "pinegreen" },
+    { name: "pinegreon" },
+    { name: "pinegrien" },
+  ];
 
   return (
     <div
