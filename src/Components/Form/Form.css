@@ -15,10 +15,18 @@
 }
 
 .form__button {
-  width: 30%;
+  width: 25%;
   align-self: center;
   margin-top: 10px;
   border: none;
   background-color: black;
   color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px #eeeeee;
+  transition: 200ms ease-in-out;
+}
+
+.form__button:hover {
+  box-shadow: 1px 2px 5px darkgrey;
 }
