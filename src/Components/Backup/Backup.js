@@ -39,3 +39,14 @@ export default function ColorCard({ colorCode, id }) {
   );
 }
  */
+
+
+
+// fetch 
+// setColorNames(() =>
+//       colorNames.map((item) => {
+//         return { ...item, name: colorName };
+//       })
+//     );
+//     console.log(colorNames);
+//   }

@@ -46,6 +46,7 @@ function App() {
         colorCode: colorCode,
       },
     ]);
+    alert("Colors has been added");
   }
 
   function updateColorCard(updatedColorCode, id) {
@@ -84,6 +85,7 @@ function App() {
           {colors.map((color) => {
             return (
               <ColorCard
+                colors={colors}
                 colorCode={color.colorCode}
                 key={color.id}
                 id={color.id}

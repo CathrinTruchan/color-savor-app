@@ -5,14 +5,16 @@
   flex-direction: row;
   position: relative;
   box-shadow: 5px 10px 10px #eeeeee;
+  border-radius: 10px;
 }
 
 .colorbox__colorcode {
-  width: 80px;
+  width: 100px;
   margin: auto;
-  justify-content: center;
-  background-color: white;
+  background-color: transparent;
+  color: white;
   border: none;
+  font-size: 1.3rem;
 }
 
 .colorbox__container {
@@ -34,4 +36,12 @@
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.colorbox__name {
+  margin: auto;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 1.4rem;
 }

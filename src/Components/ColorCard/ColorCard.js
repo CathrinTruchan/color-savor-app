@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./ColorCard.css";
 
 export default function ColorCard({
+  colors,
   colorCode,
   id,
   updateColorCard,
@@ -20,25 +21,18 @@ export default function ColorCard({
       `https://www.thecolorapi.com/id?hex=${colorCode.substring(1)}`
     );
     const fetchedColors = await response.json();
-    //const colorName = fetchedColors.name.value;
-    //console.log(fetchedColors.name.value);
     setColorNames(
       colorNames.map((item) => {
         return { name: fetchedColors.name.value };
       })
     );
-    console.log(colorNames);
   }
 
   useEffect(() => {
     fetchColorNames();
-  }, []);
+  }, [colors]);
 
-  colorNames = [
-    { name: "pinegreen" },
-    { name: "pinegreon" },
-    { name: "pinegrien" },
-  ];
+  const singleColorName = colorNames.map((colorName) => colorName.name);
 
   return (
     <div
@@ -55,7 +49,7 @@ export default function ColorCard({
       >
         X
       </button>
-      <p></p>
+      <p class="colorbox__name">{singleColorName}</p>
       <input
         type="text"
         id="colorField"
