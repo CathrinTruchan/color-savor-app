@@ -4,11 +4,10 @@ import "./ColorCard.css";
 export default function ColorCard({
   colors,
   colorCode,
-  id,
   updateColorCard,
   deleteColorCard,
 }) {
-  const [colorNames, setColorNames] = useState([{ name: "" }]);
+  const [colorNames, setColorNames] = useState("");
 
   function copyToClipboard() {
     navigator.clipboard.writeText(colorCode).then(() => {
@@ -21,18 +20,12 @@ export default function ColorCard({
       `https://www.thecolorapi.com/id?hex=${colorCode.substring(1)}`
     );
     const fetchedColors = await response.json();
-    setColorNames(
-      colorNames.map((item) => {
-        return { name: fetchedColors.name.value };
-      })
-    );
+    setColorNames(fetchedColors.name.value);
   }
 
   useEffect(() => {
     fetchColorNames();
   }, [colors]);
-
-  const singleColorName = colorNames.map((colorName) => colorName.name);
 
   return (
     <div
@@ -49,7 +42,7 @@ export default function ColorCard({
       >
         X
       </button>
-      <p class="colorbox__name">{singleColorName}</p>
+      <p class="colorbox__name">{colorNames}</p>
       <input
         type="text"
         id="colorField"
@@ -59,7 +52,7 @@ export default function ColorCard({
         }}
         defaultValue={colorCode}
         className="colorbox__colorcode"
-        onChange={(event) => updateColorCard(event.target.value, id)}
+        onChange={(event) => updateColorCard(event.target.value)}
       />
     </div>
   );

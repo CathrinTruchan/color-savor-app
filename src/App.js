@@ -35,7 +35,7 @@ const colorsArray = [
 
 function App() {
   const [colors, setColors] = useState(
-    JSON.parse(localStorage.getItem("colors")) ?? colorsArray
+    () => JSON.parse(localStorage.getItem("colors")) ?? colorsArray
   );
 
   function appendColorCard(colorCode) {
@@ -46,7 +46,7 @@ function App() {
         colorCode: colorCode,
       },
     ]);
-    alert("Colors has been added");
+    alert("Your color has been added");
   }
 
   function updateColorCard(updatedColorCode, id) {
@@ -70,10 +70,6 @@ function App() {
     localStorage.setItem("colors", JSON.stringify(colors));
   }, [colors]);
 
-  useEffect(() => {
-    JSON.parse(localStorage.getItem("colors"));
-  }, []);
-
   return (
     <div className="App">
       <header></header>
@@ -88,8 +84,9 @@ function App() {
                 colors={colors}
                 colorCode={color.colorCode}
                 key={color.id}
-                id={color.id}
-                updateColorCard={updateColorCard}
+                updateColorCard={(newColor) =>
+                  updateColorCard(newColor, color.id)
+                }
                 deleteColorCard={() => deleteColorCard(color.id)}
               />
             );
